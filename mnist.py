@@ -25,6 +25,8 @@ def run_exp(
         result_filename = f"/content/results/{method}_{epochs}_{depth}_{seed}_history.pk"
 
     input_converters = {
+        'qrac21': qrac21,
+        'simplex': simplex,
         'qrac': qrac,
         'conv': conv,
         'te': TE_31,
@@ -33,6 +35,8 @@ def run_exp(
     }
 
     circuit_makers = {
+        'simplex':convert_to_circuit_simplex,
+        'qrac21': convert_to_circuit_QRAC21,
         'QRAC': convert_to_circuit_QRAC,
         '16px': convert_to_circuit,
         '8px': convert_to_circuit_8px
@@ -72,7 +76,7 @@ def run_exp(
 
         data_train = np.array(data_train)
         data_test = np.array(data_test)
-        if method in ['qrac', 'conv']:
+        if method in ['qrac', 'conv', 'qrac21', 'simplex']:
             num_qubit = data_train.shape[1]//2
         else:
             num_qubit = data_train.shape[1]
@@ -90,6 +94,10 @@ def run_exp(
         x_train_circ = [circuit_makers['QRAC']
                         (x, num_qubit) for x in data_train]
         x_test_circ = [circuit_makers['QRAC'](x, num_qubit) for x in data_test]
+    elif method in ['simplex', 'qrac21']:
+        x_train_circ = [circuit_makers[method]
+                        (x, num_qubit) for x in data_train]
+        x_test_circ = [circuit_makers[method](x, num_qubit) for x in data_test]
     else:
         x_train_circ = None
         x_test_circ = None

@@ -45,7 +45,7 @@ def run_exp(
     if model_directory is None:
         model_directory = f'models/Titanic_{method}_{epochs}_{positive_factor}_{depth}_{seed}_{reg}_model'
     if result_directory is None:
-        result_directory = f'results/Titanic_{method}_{epochs}_{positive_factor}_{depth}_{seed}_{reg}_result'
+        result_directory = f'/content/results/Titanic_{method}_{epochs}_{positive_factor}_{depth}_{seed}_{reg}_result'
 
     all_discrete = method in ['qrac', 'te', 'zz_dis']
 

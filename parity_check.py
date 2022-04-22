@@ -135,10 +135,10 @@ def run_exp(
 
     qsvm.save_model(f'{model_directory}/model')
     if reg == 0.:
-        with open(f'results/Parity_check_{method}_{bit}_{dup}_{seed}_{depth}', 'wb') as f:
+        with open(f'/content/results/Parity_check_{method}_{bit}_{dup}_{seed}_{depth}', 'wb') as f:
             pickle.dump([vqc_ordinal_log, acc], f)
     else:
-        with open(f'results/Parity_check_{method}_{bit}_{dup}_{seed}_{depth}_{reg}', 'wb') as f:
+        with open(f'/content/results/Parity_check_{method}_{bit}_{dup}_{seed}_{depth}_{reg}', 'wb') as f:
             pickle.dump([vqc_ordinal_log, acc], f)
 
     print("=" * 97)

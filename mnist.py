@@ -116,6 +116,8 @@ def run_exp(
         optimizer=tf.keras.optimizers.Adam(),
         metrics=['acc'])
 
+    print('Model:')
+    print(model)
     print(epochs)
     print('Method:', method)
 

@@ -64,10 +64,10 @@ else:
     results = run_single_exp(exp_configs, exp_name, sub_exp_name)
 
 if sub_exp_name is None:
-    with open(f"results/{exp_name}_exp.pkl", 'wb') as f:
+    with open(f"/content/results/{exp_name}_exp.pkl", 'wb') as f:
         pickle.dump(results, f)
 else:
-    with open(f"results/{exp_name}_{sub_exp_name}_exp.pkl", 'wb') as f:
+    with open(f"/content/results/{exp_name}_{sub_exp_name}_exp.pkl", 'wb') as f:
         pickle.dump(results, f)
 print(results)
 

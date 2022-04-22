@@ -43,7 +43,7 @@ def run_exp(
     if model_directory is None:
         model_directory = f'models/bc_{method}_{epochs}_{positive_factor}_{depth}_{seed}_{reg}_model'
     if result_directory is None:
-        result_directory = f'results/bc_{method}_{epochs}_{positive_factor}_{depth}_{seed}_{reg}_result'
+        result_directory = f'/content/results/bc_{method}_{epochs}_{positive_factor}_{depth}_{seed}_{reg}_result'
 
     df_train, y_df_train = get_breast_cancer_data()
     y_train = y_df_train.values

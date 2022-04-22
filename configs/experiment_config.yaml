@@ -130,6 +130,12 @@ mnist:
         depth: 1
         seed: 111
 
+    te_mnist:
+        method: "te"
+        epochs: 3
+        depth: 1
+        seed: 111
+
     conv_mnist:
         method: "conv"
         epochs: 3

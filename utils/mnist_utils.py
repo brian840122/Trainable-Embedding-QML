@@ -68,6 +68,33 @@ def qrac(data):
 
     return var_list
 
+def qrac21(data):
+    data = data.reshape(-1).tolist()
+    data += [0] * ((2-len(data)) % 2)
+    vm = [[np.pi/2, np.pi/4], [np.pi/2, np.pi*3/4], [np.pi/2, np.pi*7/4], [np.pi/2, np.pi*5/4]]
+
+    var_list = []
+    for i in range(0, len(data), 2):
+        var_list += vm[int("".join(str(j) for j in data[i:i+2]),2)]
+
+    return var_list
+
+def simplex(data):
+    data = data.reshape(-1).tolist()
+    data += [0] * ((2-len(data)) % 2)
+
+    var_list = []
+    for i in range(0, len(data), 2):
+        x = data[i:i+2]
+        if x[0] or x[1]:
+            var_list.append(2*np.arccos(1/np.sqrt(3)))
+        else:
+            var_list.append(0)
+        var_list.append((x[0]*2 + x[1])*2*np.pi/3)
+
+    return var_list
+        
+
 def TE_31(data):
     data = data.reshape(-1).tolist()
     data += [0] * ((3-len(data)) % 3)
@@ -231,6 +258,24 @@ def convert_to_circuit_QRAC(data, num_qubit):
         circuit.append(cirq.rx(data[2*i])(qubits[i]))
         circuit.append(cirq.ry(data[2*i+1])(qubits[i]))
     return circuit
+
+def convert_to_circuit_QRAC21(data, num_qubit):
+    qubits = cirq.GridQubit.rect(num_qubit,1)
+    circuit = cirq.Circuit()
+    for i in range(len(data) // 2):
+        circuit.append(cirq.rx(data[2*i])(qubits[i]))
+        circuit.append(cirq.rz(data[2*i+1])(qubits[i]))
+    return circuit
+
+def convert_to_circuit_simplex(data, num_qubit):
+    qubits = cirq.GridQubit.rect(num_qubit,1)
+    circuit = cirq.Circuit()
+    for i in range(len(data) // 2):
+        circuit.append(cirq.ry(data[2*i])(qubits[i]))
+        circuit.append(cirq.rz(data[2*i+1])(qubits[i]))
+    return circuit
+
+
 
 def scheduler(epoch, lr):
     if epoch > 5:

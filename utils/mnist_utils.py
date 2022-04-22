@@ -176,7 +176,7 @@ def create_normal_model(METHOD, num_qubit, LAYER):
         tfq.layers.PQC(model_circuit, model_readout),
         tf.keras.layers.Lambda(lambda x: (x+1)/2),
     ])
-
+    print(model_circuit)
     return model
 
 def create_TE_model(METHOD, num_qubit, LAYER):

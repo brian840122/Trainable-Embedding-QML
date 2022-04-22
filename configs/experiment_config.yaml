@@ -112,6 +112,16 @@ ts:
 
 # MNIST
 mnist:
+    simplex:
+        method: "simplex"
+        epochs: 3
+        depth: 1
+        seed: 111
+    qrac21:
+        method: "qrac21"
+        epochs: 3
+        depth: 1
+        seed: 111
     16px_mnist:
         method: "16px"
         epochs: 3

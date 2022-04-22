@@ -22,7 +22,7 @@ def run_exp(
     tf.random.set_seed(seed)
 
     if result_filename is None:
-        result_filename = f"results/{method}_{epochs}_{depth}_{seed}_history.pk"
+        result_filename = f"/content/results/{method}_{epochs}_{depth}_{seed}_history.pk"
 
     input_converters = {
         'qrac': qrac,

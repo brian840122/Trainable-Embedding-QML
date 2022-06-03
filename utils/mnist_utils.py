@@ -210,12 +210,20 @@ def create_TE_model(METHOD, num_qubit, LAYER):
     model_circuit, model_readout = create_quantum_model(METHOD, num_qubit, LAYER)
     inp = tf.keras.layers.Input((num_qubit,))
     outputs = []
+    # reduced
+    if METHOD in ['TE41', 'conv_41', 'TE41_dup', 'conv_41_s2']:
+        emb_layer = tf.keras.layers.Embedding(16, 2)
+    else:
+        emb_layer = tf.keras.layers.Embedding(8, 2)
+    for i in range(num_qubit):
+        outputs.append(emb_layer(inp[:,i]))
+    ''' # original
     for i in range(num_qubit):
         if METHOD in ['TE41', 'conv_41', 'TE41_dup', 'conv_41_s2']:
             outputs.append(tf.keras.layers.Embedding(16, 2)(inp[:,i]))
         else:
             outputs.append(tf.keras.layers.Embedding(8, 2)(inp[:,i]))
-
+    '''
     outputs = tf.keras.layers.Concatenate()(outputs)
     embed_angle = tf.keras.layers.Concatenate()([outputs[:,::2], outputs[:,1::2]])
 

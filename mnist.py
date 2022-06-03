@@ -128,14 +128,14 @@ def run_exp(
     print(model)
     print(epochs)
     print('Method:', method)
-
+    
     # Train model
     qnn_history = model.fit(
-        x_train_tfcirc, y_train_nocon,
+        x_train_tfcirc, y_train_nocon, # INPUT
         batch_size=32,
         epochs=epochs,
         verbose=1,
-        validation_data=(x_test_tfcirc, y_test),
+        validation_data=(x_test_tfcirc, y_test), #TEST INPUT
         callbacks=cb)
 
     qnn_results = model.evaluate(x_test_tfcirc, y_test)

@@ -120,6 +120,7 @@ def run_exp(
     else:
         model = create_normal_model(method, num_qubit, depth)
 
+    method.summary()
     cb = [tf.keras.callbacks.LearningRateScheduler(scheduler, verbose=0)]
 
     model.compile(
@@ -131,7 +132,6 @@ def run_exp(
     print(model)
     print(epochs)
     print('Method:', method)
-    method.summary()
     
     # Train model
     qnn_history = model.fit(

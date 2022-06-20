@@ -238,6 +238,20 @@ def create_TE_model(METHOD, num_qubit, LAYER):
 
     return model
 
+def create_RNN_model(METHOD, num_qubit, LAYER):
+    inp = tf.keras.layers.Input((num_qubit,))
+    outputs = []
+    if METHOD in ['41RNN']:
+        emb_layer = tf.keras.layers.Embedding(16, 2)
+    else:
+        emb_layer = tf.keras.layers.Embedding(8, 2)
+    for i in range(num_qubit):
+        outputs.append(emb_layer(inp[:,i]))
+    outputs = tf.keras.layers.Concatenate()(outputs)
+    output = tf.keras.layers.Dense(1)(outputs)
+    model = tf.keras.Model(inp, output)
+
+    return model
 
 def convert_to_circuit(image):
     """Encode truncated classical image into quantum datapoint."""

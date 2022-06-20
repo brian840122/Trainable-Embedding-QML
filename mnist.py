@@ -30,6 +30,7 @@ def run_exp(
         'qrac': qrac,
         'conv': conv,
         'te': TE_31,
+        '31RNN': TE_31,
         'conv_te': conv_TE,
         'conv_41': conv_41
     }
@@ -102,7 +103,7 @@ def run_exp(
         x_train_circ = None
         x_test_circ = None
 
-    if method in ['te', 'conv_te', 'conv_41']:
+    if method in ['te', 'conv_te', 'conv_41', '31RNN', '41RNN']:
         # Input the numpy directly
         x_train_tfcirc = data_train
         x_test_tfcirc = data_test
@@ -114,6 +115,8 @@ def run_exp(
 
     if method in ['te', 'conv_te', 'conv_41']:
         model = create_TE_model(method, num_qubit, depth)
+    elif method in ['31RNN', '41RNN']:
+        model = create_RNN_model(method, num_qubit, depth)
     else:
         model = create_normal_model(method, num_qubit, depth)
 

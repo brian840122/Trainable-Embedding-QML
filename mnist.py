@@ -131,6 +131,7 @@ def run_exp(
     print(model)
     print(epochs)
     print('Method:', method)
+    method.summary()
     
     # Train model
     qnn_history = model.fit(

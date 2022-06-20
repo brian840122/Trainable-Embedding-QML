@@ -120,7 +120,7 @@ def run_exp(
     else:
         model = create_normal_model(method, num_qubit, depth)
 
-    method.summary()
+    model.summary()
     cb = [tf.keras.callbacks.LearningRateScheduler(scheduler, verbose=0)]
 
     model.compile(

@@ -146,6 +146,12 @@ mnist:
         depth: 1
         seed: 111
 
+    31RNN:
+        method: "31RNN"
+        epochs: 10
+        depth: 1
+        seed: 111
+
     conv_mnist:
         method: "conv"
         epochs: 10

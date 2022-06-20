@@ -246,7 +246,8 @@ def create_RNN_model(METHOD, num_qubit, LAYER):
     else:
         emb_layer = tf.keras.layers.Embedding(8, 2)
     for i in range(num_qubit):
-        outputs.append(emb_layer(inp[:,i]))
+        #outputs.append(emb_layer(inp[:,i]))
+        outputs.append(tf.keras.layers.Embedding(8, 2)(inp[:,i]))
     outputs = tf.keras.layers.Concatenate()(outputs)
     output = tf.keras.layers.Dense(1)(outputs)
     model = tf.keras.Model(inp, output)

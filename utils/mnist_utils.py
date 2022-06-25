@@ -250,8 +250,8 @@ def create_RNN_model(METHOD, num_qubit, LAYER):
         #outputs.append(tf.keras.layers.Embedding(8, 2)(inp[:,i]))
     outputs = tf.keras.layers.Concatenate()(outputs)
     #outputs = tf.keras.layers.Dense(6)(outputs) #
-    outputs = tf.keras.layers.Dense(1)(outputs)
-    #output = tf.keras.layers.Softmax()(outputs) #
+    output = tf.keras.layers.Dense(1)(outputs)
+    #output = tf.keras.layers.Softmax()(output) #
     model = tf.keras.Model(inp, output)
 
     return model

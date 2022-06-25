@@ -244,14 +244,14 @@ def create_RNN_model(METHOD, num_qubit, LAYER):
     if METHOD in ['41RNN']:
         emb_layer = tf.keras.layers.Embedding(16, 2)
     else:
-        emb_layer = tf.keras.layers.Embedding(8, 1) #(8, 2)
+        emb_layer = tf.keras.layers.Embedding(8, 2) #(8, 2)
     for i in range(num_qubit):
         outputs.append(emb_layer(inp[:,i]))
         #outputs.append(tf.keras.layers.Embedding(8, 2)(inp[:,i]))
     outputs = tf.keras.layers.Concatenate()(outputs)
     #outputs = tf.keras.layers.Dense(6)(outputs) #
     output = tf.keras.layers.Dense(1)(outputs)
-    output = tf.keras.layers.Activation(activation='sigmoid')(output)
+    output = tf.keras.layers.Activation(activation='sigmoid')(output) #
     #output = tf.keras.layers.Softmax()(output) #
     model = tf.keras.Model(inp, output)
 

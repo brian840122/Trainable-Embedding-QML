@@ -65,7 +65,7 @@ def run_exp(
     x_train_nocon, y_train_nocon = remove_contradicting(x_train_small, y_train)
     x_train_bin = np.array(x_train_nocon > THRESHOLD, dtype=np.int32)
     x_test_bin = np.array(x_test_small > THRESHOLD, dtype=np.int32)
-    print("y_train:", y_train_nocon[0, 10])
+    print("y_train:", y_train_nocon[:10])
     # Need to convert angle or embedding index
     if method not in ['8px', '16px']:
         data_train, data_test = [], []

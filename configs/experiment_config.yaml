@@ -218,11 +218,11 @@ pc_6:
 
     te_pc:
         method: "te"
-        epochs: 400
+        epochs: 10
         bit: 6
         depth: 4
         dup: 1
-        seed: [111,222,333,444,555]
+        seed: [111]
 
     qrac_pc:
         method: "qrac"

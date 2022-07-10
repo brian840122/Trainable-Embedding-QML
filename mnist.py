@@ -58,8 +58,9 @@ def run_exp(
     print("Number of filtered training examples:", len(x_train))
     print("Number of filtered test examples:", len(x_test))
 
-    x_train_small = tf.image.resize(x_train, (4, 4)).numpy()
-    x_test_small = tf.image.resize(x_test, (4, 4)).numpy()
+    image_size = 5
+    x_train_small = tf.image.resize(x_train, (image_size, image_size)).numpy()
+    x_test_small = tf.image.resize(x_test, (image_size, image_size)).numpy()
 
     # Filter same images
     x_train_nocon, y_train_nocon = remove_contradicting(x_train_small, y_train)

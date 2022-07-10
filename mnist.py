@@ -145,7 +145,7 @@ def run_exp(
     # Train model
     qnn_history = model.fit(
         x_train_tfcirc, y_train_nocon, # INPUT
-        batch_size=3,
+        #batch_size=3,
         epochs=epochs,
         verbose=1,
         validation_data=(x_test_tfcirc, y_test), #TEST INPUT

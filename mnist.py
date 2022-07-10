@@ -58,14 +58,23 @@ def run_exp(
     print("Number of filtered training examples:", len(x_train))
     print("Number of filtered test examples:", len(x_test))
 
-    image_size = 3
+    image_size = 4
     x_train_small = tf.image.resize(x_train, (image_size, image_size)).numpy()
     x_test_small = tf.image.resize(x_test, (image_size, image_size)).numpy()
 
     # Filter same images
-    x_train_nocon, y_train_nocon = remove_contradicting(x_train_small, y_train)
-    x_train_bin = np.array(x_train_nocon > THRESHOLD, dtype=np.int32)
-    x_test_bin = np.array(x_test_small > THRESHOLD, dtype=np.int32)
+    
+    # Origin
+    # x_train_nocon, y_train_nocon = remove_contradicting(x_train_small, y_train)
+    # x_train_bin = np.array(x_train_nocon > THRESHOLD, dtype=np.int32)
+    # x_test_bin = np.array(x_test_small > THRESHOLD, dtype=np.int32)
+
+    # GGH
+    x_train_bin = np.array(x_train_small > THRESHOLD, dtype=np.int32) #GGH
+    x_test_bin = np.array(x_test_small > THRESHOLD, dtype=np.int32) #
+    x_train_bin, y_train_nocon = remove_contradicting(x_train_bin, y_train) #
+    x_test_bin, y_test = remove_contradicting(x_test_bin, y_test) #
+
     # Need to convert angle or embedding index
     if method not in ['8px', '16px']:
         data_train, data_test = [], []

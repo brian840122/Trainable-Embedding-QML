@@ -58,7 +58,7 @@ def run_exp(
     print("Number of filtered training examples:", len(x_train))
     print("Number of filtered test examples:", len(x_test))
 
-    image_size = 5
+    image_size = 4
     x_train_small = tf.image.resize(x_train, (image_size, image_size)).numpy()
     x_test_small = tf.image.resize(x_test, (image_size, image_size)).numpy()
 

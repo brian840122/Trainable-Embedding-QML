@@ -74,6 +74,8 @@ def run_exp(
     x_test_bin = np.array(x_test_small > THRESHOLD, dtype=np.int32) #
     x_train_bin, y_train_nocon = remove_contradicting(x_train_bin, y_train) #
     x_test_bin, y_test = remove_contradicting(x_test_bin, y_test) #
+    x_train_bin = x_train_bin[:-(len(x_train_bin)%32)] #
+    y_train_nocon = y_train_nocon[:-(len(y_train_nocon)%32)] #
 
     # Need to convert angle or embedding index
     if method not in ['8px', '16px']:
@@ -145,7 +147,7 @@ def run_exp(
     # Train model
     qnn_history = model.fit(
         x_train_tfcirc, y_train_nocon, # INPUT
-        #batch_size=3,
+        batch_size=32,
         epochs=epochs,
         verbose=1,
         validation_data=(x_test_tfcirc, y_test), #TEST INPUT

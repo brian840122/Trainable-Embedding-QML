@@ -7,6 +7,8 @@ from bc import run_exp as bc_run_exp
 from titanic import run_exp as ts_run_exp
 from parity_check import run_exp as pc_run_exp
 from mnist import run_exp as mnist_run_exp
+import warnings
+warnings.filterwarnings("ignore")
 
 parser = argparse.ArgumentParser(description='Run an experiment')
 parser.add_argument('--exp_name', dest='exp_name', type=str)

@@ -114,12 +114,12 @@ ts:
 mnist:
     simplex:
         method: "simplex"
-        epochs: 3
+        epochs: 10
         depth: 1
         seed: 111
     qrac21:
         method: "qrac21"
-        epochs: 3
+        epochs: 10
         depth: 1
         seed: 111
     16px_mnist:

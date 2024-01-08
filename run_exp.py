@@ -13,9 +13,13 @@ warnings.filterwarnings("ignore")
 parser = argparse.ArgumentParser(description='Run an experiment')
 parser.add_argument('--exp_name', dest='exp_name', type=str)
 parser.add_argument('--sub_exp_name', dest="sub_exp_name", type=str, default=None)
+parser.add_argument('--image_size', dest="image_size", type=int, default=None)
+# parser.add_argument('--depth', dest="depth", type=int, default=1)
 args = parser.parse_args()
 exp_name = args.exp_name
 sub_exp_name = args.sub_exp_name
+image_size = args.image_size
+# depth = args.depth
 
 run_exp_dataset = {
     'bc': bc_run_exp,
@@ -28,6 +32,8 @@ run_exp_dataset = {
 
 def run_single_exp(exp_configs, exp_name, sub_exp_name):
     exp_config = exp_configs[exp_name][sub_exp_name]
+    if exp_name=='mnist':
+        exp_config['image_size'] = image_size
     if isinstance(exp_config['seed'], list):
         seeds = exp_config['seed']
         exp_config.pop('seed', None)

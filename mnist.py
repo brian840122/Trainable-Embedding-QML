@@ -155,9 +155,9 @@ def run_exp(
         callbacks=cb)
 
     qnn_results = model.evaluate(x_test_tfcirc, y_test)
-    import pickle
-    with open(result_filename, 'wb') as f:
-        pickle.dump(qnn_history.history, f)
+    # import pickle
+    # with open(result_filename, 'wb') as f:
+    #     pickle.dump(qnn_history.history, f)
 
     return_result = {
         'train_acc': qnn_history.history['acc'][-1],

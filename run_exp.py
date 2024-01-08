@@ -30,7 +30,7 @@ run_exp_dataset = {
     'mnist': mnist_run_exp
 }
 
-def run_single_exp(exp_configs, exp_name, sub_exp_name):
+def run_single_exp(exp_configs, exp_name, sub_exp_name, image_size=image_size):
     exp_config = exp_configs[exp_name][sub_exp_name]
     if exp_name=='mnist':
         exp_config['image_size'] = image_size

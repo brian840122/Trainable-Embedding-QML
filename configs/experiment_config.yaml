@@ -137,7 +137,7 @@ mnist:
     qrac_mnist:
         method: "qrac"
         epochs: 10
-        depth: 1
+        depth: 2
         seed: 111
 
     te_mnist:
